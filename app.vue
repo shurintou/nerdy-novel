@@ -18,3 +18,19 @@ useSeoMeta({
   twitterCard: "summary_large_image"
 })
 </script>
+
+<style>
+:root {
+  --background-color-light: #f4f4f4;
+  --background-color-dark: #121212;
+  --text-color-light: #333;
+  --text-color-dark: #f4f4f4;
+  --novel-background-color-dark: #1e1e1e;
+  --novel-background-color-light: #fff;
+  --primary-button-color: #ff6f61;
+  --header-bg-light: linear-gradient(135deg, #6e45e2, #88d3ce);
+  --header-bg-dark: linear-gradient(135deg, #4a3c9e, #6b9c8c);
+  --footer-bg-light: #d3d3d3;
+  --footer-bg-dark: #333;
+}
+</style>
