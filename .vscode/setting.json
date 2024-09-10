@@ -1,0 +1,19 @@
+{
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "typescript.suggest.autoImports": true,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "eslint.validate": [
+    "javascript",
+    "typescript",
+    "vue"
+  ],
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "eslint.format.enable": true,
+  "prettier.enable": false,
+  "volar.useWorkspaceTsdk": true,
+  "vue.version": "3"
+}
