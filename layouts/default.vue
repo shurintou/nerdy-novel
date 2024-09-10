@@ -1,8 +1,8 @@
 <template>
   <div>
-    <p>static header</p>
+    <LayoutHeader/>
     <slot />
-    <p>static footer</p>
+    <LayoutFooter/>
   </div>
 </template>
 
