@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { Novel } from '@/types/novel'
+import type { NovelMetaData } from '@/types/apis/novels/novel'
 
 const props = defineProps({
   apiPath: {
@@ -14,7 +14,7 @@ const props = defineProps({
   }
 })
 
-const { data: novels, error } = await useFetch<Novel[]>(props.apiPath)
+const { data: novels, error } = await useFetch<NovelMetaData[]>(props.apiPath)
 if (error.value) {
   console.error('Error fetching novels:', error.value)
 }

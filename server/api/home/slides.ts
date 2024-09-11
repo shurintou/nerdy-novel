@@ -1,4 +1,4 @@
-import { Slide } from '@/types/slide'
+import { Slide } from '@/types/apis/slide'
 
 export default defineEventHandler(async (): Promise<Array<Slide>> => {
   const slides: Array<Slide> = [

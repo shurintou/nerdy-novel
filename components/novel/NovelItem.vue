@@ -21,11 +21,11 @@
 </template>
 
 <script lang="ts" setup>
-import type { Novel } from '@/types/novel'
+import type { NovelMetaData } from '@/types/apis/novels/novel'
 
 defineProps({
   novelData: {
-    type: Object as PropType<Novel>,
+    type: Object as PropType<NovelMetaData>,
     required: true
   }
 })

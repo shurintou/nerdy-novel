@@ -22,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Slide } from '@/types/slide'
+import type { Slide } from '@/types/apis/slide'
 
 const props = defineProps({
   apiPath: {
