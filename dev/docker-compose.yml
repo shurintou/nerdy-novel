@@ -11,3 +11,19 @@ services:
           cpus: '0.5'
     ports:
       - "3000:3000"
+    depends_on:
+      - db
+  db:
+    image: amazon/dynamodb-local
+    command: "-jar DynamoDBLocal.jar -sharedDb -dbPath ./data"
+    container_name: nerdy-novel-db-local
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+          cpus: '0.5'
+    ports:
+      - "8000:8000"
+    working_dir: /home/dynamodblocal
+    volumes:
+      - "./docker/dynamodb:/home/dynamodblocal/data"

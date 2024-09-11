@@ -1,7 +1,11 @@
 dev:
 	npm run dev
+
 up:
-	docker-compose -f ./dev/docker-compose.yml up
+	docker-compose -f ./dev/docker-compose.yml up -d --build
+
+down:
+	docker-compose -f ./dev/docker-compose.yml down
 
 build:
 	docker build . -t nerdy-novel
