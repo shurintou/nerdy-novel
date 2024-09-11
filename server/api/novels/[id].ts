@@ -1,5 +1,5 @@
 import { H3EventContext } from 'h3'
-import { NovelWithCurrentChapterContent } from '@/types/apis/novels/novel'
+import { NovelWithCurrentChapterContent } from '@/types/apis/novels/'
 import { ChapterModel } from '@/types/models/chapter'
 
 export default defineEventHandler((event: H3EventContext): NovelWithCurrentChapterContent => {

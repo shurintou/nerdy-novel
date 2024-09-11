@@ -1,4 +1,4 @@
-import { NovelBasicMetaData } from '@/types/apis/novels/novel'
+import { NovelBasicMetaData } from '@/types/apis/novels/'
 
 export default defineEventHandler(async (): Promise<Array<NovelBasicMetaData>> => {
   const novels: Array<NovelBasicMetaData> = []

@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { NovelMetaData } from '@/types/apis/novels/novel'
+import type { NovelMetaData } from '@/types/apis/novels/'
 
 defineProps({
   novelData: {
