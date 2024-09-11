@@ -7,4 +7,6 @@ export interface Novel {
   content: string
   imageUrl: string
   imageAlt: string
+  createdAt: string
+  updatedAt: string
 }
