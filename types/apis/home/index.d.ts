@@ -9,3 +9,9 @@ export interface NovelBasicMetaData {
   title: Novel['title']
   category: Novel['category']
 }
+
+export interface CategoryNovels {
+  id: string
+  categoryTitle: string
+  novelBasicMetaDataList: Array<NovelBasicMetaData>
+}
