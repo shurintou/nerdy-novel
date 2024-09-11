@@ -1,13 +1,8 @@
-import { defineNuxtConfig } from 'nuxt/config'
-
 export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
   devtools: { enabled: true },
   ssr: true,
   modules: ['nuxt-swiper'],
-  css: [
-    '~/assets/css/global.css',
-  ],
   app: {
     head: {
       htmlAttrs: {

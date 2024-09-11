@@ -33,4 +33,13 @@ useSeoMeta({
   --footer-bg-light: #d3d3d3;
   --footer-bg-dark: #333;
 }
+
+body {
+  font-family: 'ZCOOL KuHei', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--background-color-light);
+  color: var(--text-color-light);
+  transition: background-color 0.3s, color 0.3s;
+}
 </style>
