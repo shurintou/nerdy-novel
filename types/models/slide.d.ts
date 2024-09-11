@@ -1,4 +1,4 @@
-export interface Slide {
+export interface SlideModel {
   id: string
   url: string
   alt: string

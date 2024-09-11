@@ -1,4 +1,4 @@
-export interface Novel {
+export interface NovelModel {
   id: string
   category: string
   author: string

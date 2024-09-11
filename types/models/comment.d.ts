@@ -1,4 +1,4 @@
-export interface Comment {
+export interface CommentModel {
   id: string
   userName: string
   text: string
