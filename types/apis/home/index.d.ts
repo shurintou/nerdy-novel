@@ -1,4 +1,4 @@
-import { NovelModel as Novel } from '@/types/models/novel.d.ts'
+import { Novel } from '@/types/models/novel.d.ts'
 
 export type { Novel }
 

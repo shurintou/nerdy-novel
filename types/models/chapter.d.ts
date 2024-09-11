@@ -1,4 +1,4 @@
-export interface ChapterModel {
+export interface Chapter {
   id: string
   title: string
   content: string

@@ -1,6 +1,6 @@
-import { NovelModel as Novel } from '@/types/models/novel.d.ts'
-import { CommentModel as Comment } from '@/types/models/comment.d.ts'
-import { ChapterModel as Chapter } from '@/types/models/chapter.d.ts'
+import { Novel } from '@/types/models/novel.d.ts'
+import { Comment } from '@/types/models/comment.d.ts'
+import { Chapter } from '@/types/models/chapter.d.ts'
 
 export type { Novel, Comment, Chapter }
 
