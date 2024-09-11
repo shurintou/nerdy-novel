@@ -2,7 +2,7 @@ import { Novel } from '@/types/novel'
 
 export default defineEventHandler(async (): Promise<Array<Novel>> => {
   const novels: Array<Novel> = []
-  for (let i = 1; i <= 100; i++) {
+  for (let i = 1; i <= 8; i++) {
     const isEven = i % 2 === 0
     novels.push({
       id: i,
