@@ -10,10 +10,10 @@
 </template>
 
 <script setup lang="ts">
-import type { Novel } from '@/types/novel'
+import type { NovelMetaData } from '@/types/apis/novels/'
 
-const { data: novels,error } = await useFetch<Novel[]>('/api/novels')
-  if (error.value) {
+const { data: novels, error } = await useFetch<NovelMetaData[]>('/api/novels')
+if (error.value) {
   console.error('Error fetching novels:', error.value)
 }
 useHead({

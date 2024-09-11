@@ -1,10 +1,10 @@
 import { H3EventContext } from 'h3'
-import { CommentModel } from '@/types/models/comment'
+import { Comment } from '@/types/apis/novels'
 
 export default defineEventHandler(async (event: H3EventContext) => {
   const { id } = event.context.params as { id: string }
 
-  const comments: Array<CommentModel> = []
+  const comments: Array<Comment> = []
 
   for (let i = 1; i <= 10; i++) {
     comments.push({

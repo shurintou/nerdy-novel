@@ -1,11 +1,10 @@
 import { H3EventContext } from 'h3'
-import { NovelWithCurrentChapterContent } from '@/types/apis/novels/'
-import { ChapterModel } from '@/types/models/chapter'
+import { NovelWithCurrentChapterContent, Chapter } from '@/types/apis/novels/'
 
 export default defineEventHandler((event: H3EventContext): NovelWithCurrentChapterContent => {
   const { id } = event.context.params as { id: string }
   const fooFlag = Math.random() < 0.5
-  const chapters: Array<ChapterModel> = []
+  const chapters: Array<Chapter> = []
   for (let i = 1; i <= 10; i++) {
     chapters.push({
       id: `${i}`,
@@ -17,7 +16,7 @@ export default defineEventHandler((event: H3EventContext): NovelWithCurrentChapt
     })
   }
   return {
-    id: id,
+    id: `${id}`,
     author: fooFlag ? '王二狗' : '张狗蛋',
     category: fooFlag ? '都市' : '言情',
     description: fooFlag ? '有人选择在猩红的夜晚，饮上一杯烈酒，举起了手里的猎枪。' : '身上留下了无数伤病的夏临终于混到一条WBA普通拳王金腰带,身上留下了无数伤病的夏临终于混到一条WBA普通拳王金腰带,身上留下了无数伤病的夏临终于混到一条WBA普通拳王金腰带',
