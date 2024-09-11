@@ -1,19 +1,19 @@
 <template>
   <header>
-      <div class="main-header header-title">
-          <h1>呆书网</h1>
+    <div class="main-header header-title">
+      <h1>呆书网</h1>
+    </div>
+    <div class="header-content">
+      <nav>
+        <ul>
+          <li><a :href="`/`">主页</a></li>
+          <li><a :href="`/novels`">全部作品</a></li>
+        </ul>
+      </nav>
+      <div id="theme-toggle" class="theme-toggle">
+        <i class="fas fa-sun"></i>
       </div>
-      <div class="header-content">
-          <nav>
-              <ul>
-                  <li><a href="index.html">主页</a></li>
-                  <li><a href="novels.html">全部作品</a></li>
-              </ul>
-          </nav>
-          <div id="theme-toggle" class="theme-toggle">
-              <i class="fas fa-sun"></i>
-          </div>
-      </div>
+    </div>
   </header>
 </template>
 
@@ -25,7 +25,7 @@ header {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.main-header{
+.main-header {
   max-width: 1200px;
   margin: 0 auto;
 }
