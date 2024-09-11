@@ -5,7 +5,7 @@ export default defineEventHandler((event: H3EventContext): Novel => {
   const { id } = event.context.params as { id: string }
   const fooFlag = Math.random() < 0.5
   return {
-    id: parseInt(id),
+    id: id,
     author: fooFlag ? '王二狗' : '张狗蛋',
     category: fooFlag ? '都市' : '言情',
     description: fooFlag ? '有人选择在猩红的夜晚，饮上一杯烈酒，举起了手里的猎枪。' : '身上留下了无数伤病的夏临终于混到一条WBA普通拳王金腰带,身上留下了无数伤病的夏临终于混到一条WBA普通拳王金腰带,身上留下了无数伤病的夏临终于混到一条WBA普通拳王金腰带',

@@ -1,5 +1,5 @@
 export interface Novel {
-  id: number
+  id: string
   category: string
   author: string
   title: string
