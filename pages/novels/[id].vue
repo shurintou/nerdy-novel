@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>{{ novel?.title }}</h1>
-    <div v-html="novel?.content"></div>
+    <div v-html="novel?.currentChapterContent"></div>
 
     <div v-if="comments">
       <h2>评论</h2>
@@ -15,12 +15,11 @@
 </template>
 
 <script setup lang="ts">
-import type { Novel } from '@/types/novel'
-import type { Comment } from '@/types/comment'
+import type { NovelWithCurrentChapterContent, Comment } from '@/types/apis/novels/'
 
 const route = useRoute()
 const novelId = route.params.id
-const { data: novel } = await useFetch<Novel>(`/api/novels/${novelId}`)
+const { data: novel } = await useFetch<NovelWithCurrentChapterContent>(`/api/novels/${novelId}`)
 
 const title = computed(() => novel.value?.title ? `${novel.value.title} - 我的小说网站` : '我的小说网站')
 const comments = ref<Comment[]>([])
