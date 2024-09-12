@@ -48,4 +48,9 @@ footer .back-to-top:hover {
   cursor: pointer;
   background-color: #777;
 }
+
+body.dark-mode footer {
+  color: var(--text-color-dark);
+  background-color: var(--background-color-dark);
+}
 </style>
