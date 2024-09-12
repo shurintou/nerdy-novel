@@ -49,7 +49,7 @@ footer .back-to-top:hover {
   background-color: #777;
 }
 
-body.dark-mode footer {
+#app-container.dark-mode footer {
   color: var(--text-color-dark);
   background-color: var(--background-color-dark);
 }

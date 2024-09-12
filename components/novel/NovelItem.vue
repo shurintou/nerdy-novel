@@ -144,7 +144,7 @@ defineProps({
   color: var(--primary-button-color);
 }
 
-body.dark-mode .novel {
+#app-container.dark-mode .novel {
   background: var(--novel-background-color-dark);
 }
 </style>

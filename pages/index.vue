@@ -56,7 +56,7 @@ useHead({
   background-color: var(--text-color-light);
 }
 
-body.dark-mode .latest-novels .underline::after {
+#app-container.dark-mode .latest-novels .underline::after {
   background-color: var(--text-color-dark);
 }
 </style>

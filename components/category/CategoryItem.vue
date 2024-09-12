@@ -61,11 +61,11 @@ defineProps({
   }
 }
 
-body.dark-mode .underline::after {
+#app-container.dark-mode .underline::after {
   background-color: var(--text-color-dark);
 }
 
-body.dark-mode .category {
+#app-container.dark-mode .category {
   background: var(--novel-background-color-dark);
 }
 </style>

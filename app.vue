@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="app-container" :class="{ 'dark-mode': isDarkMode }">
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
@@ -17,6 +17,7 @@ useSeoMeta({
   ogImage: "https://example.com/image.png",
   twitterCard: "summary_large_image"
 })
+const isDarkMode = useCookie('isDarkMode')
 </script>
 
 <style>
@@ -41,5 +42,10 @@ body {
   background-color: var(--background-color-light);
   color: var(--text-color-light);
   transition: background-color 0.3s, color 0.3s;
+}
+
+#app-container.dark-mode {
+  background-color: var(--background-color-dark);
+  color: var(--text-color-dark);
 }
 </style>

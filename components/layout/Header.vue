@@ -10,42 +10,11 @@
           <li><a :href="`/novels`">全部作品</a></li>
         </ul>
       </nav>
-      <div id="theme-toggle" class="theme-toggle" @click="toggleBrightnessMode">
-        <i class="fas" :class="{ 'fa-sun': !isDarkMode, 'fa-moon': isDarkMode }"></i>
-      </div>
+      <ToggleDarkModeButton />
     </div>
   </header>
 </template>
 
-<script lang="ts" setup>
-const localDarkModeFlagKey = 'isDarkMode'
-const darkModeCookie = useCookie('isDarkMode')
-const isDarkMode = ref(JSON.parse(darkModeCookie.value || 'false') === true)
-
-// onNuxtReady(() => {
-//   const localDarkModeStoredString = localStorage.getItem(localDarkModeFlagKey)
-//   let localIsDarkMode = false
-//   if (localDarkModeStoredString === 'true') {
-//     localIsDarkMode = true
-//   }
-//   isDarkMode.value = localIsDarkMode
-//   localStorage.setItem(localDarkModeFlagKey, JSON.stringify(localIsDarkMode))
-//   document.body.classList.toggle('dark-mode', localIsDarkMode)
-// })
-
-onNuxtReady(() => {
-  console.log(isDarkMode.value)
-  document.body.classList.toggle('dark-mode', isDarkMode.value)
-})
-
-const toggleBrightnessMode = function () {
-  isDarkMode.value = !isDarkMode.value
-  localStorage.setItem(localDarkModeFlagKey, JSON.stringify(isDarkMode.value))
-  darkModeCookie.value = JSON.stringify(isDarkMode.value)
-  document.body.classList.toggle('dark-mode', isDarkMode.value)
-}
-
-</script>
 
 <style lang="css" scoped>
 header {
@@ -106,31 +75,11 @@ nav ul li a:hover {
   color: var(--primary-button-color);
 }
 
-body.dark-mode header {
+#app-container.dark-mode header {
   background: var(--header-bg-dark);
 }
 
-.theme-toggle {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  font-size: 24px;
-  transition: color 0.3s;
-}
-
-.theme-toggle:focus {
-  outline: none;
-}
-
-.fa-sun {
-  color: #f6f6f6;
-}
-
-.fa-moon {
-  color: #ffdf5d;
-}
-
-body.dark-mode header {
+#app-container.dark-mode header {
   background: var(--header-bg-dark);
 }
 </style>
