@@ -17,7 +17,7 @@ useSeoMeta({
   ogImage: "https://example.com/image.png",
   twitterCard: "summary_large_image"
 })
-const isDarkMode = useCookie('isDarkMode')
+const { isDarkMode } = useDarkMode()
 </script>
 
 <style>

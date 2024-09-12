@@ -1,6 +1,6 @@
 <template>
 
-  <div id="theme-toggle" class="theme-toggle" @click="toggleDarkMode">
+  <div id="theme-toggle" class="theme-toggle" @click="toggleDarkModeHandler">
     <i class="fas" :class="{ 'fa-sun': !isDarkMode, 'fa-moon': isDarkMode }"></i>
   </div>
 
@@ -8,15 +8,15 @@
 
 <script lang="ts" setup>
 const localStorageDarkModeKey = 'isDarkMode'
-const isDarkMode: { value: boolean } = useCookie('isDarkMode')
+const { isDarkMode, toggleDarkMode } = useDarkMode()
 
 onMounted(() => {
   const localStorageDarkMode = localStorage.getItem(localStorageDarkModeKey)
   isDarkMode.value = localStorageDarkMode === 'true'
 })
 
-const toggleDarkMode = function () {
-  isDarkMode.value = !isDarkMode.value
+const toggleDarkModeHandler = function () {
+  toggleDarkMode()
   localStorage.setItem(localStorageDarkModeKey, JSON.stringify(isDarkMode.value))
 }
 </script>
