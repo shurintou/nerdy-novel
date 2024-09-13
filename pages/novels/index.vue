@@ -17,6 +17,6 @@ if (error.value) {
   console.error('Error fetching novels:', error.value)
 }
 useHead({
-  title: '小说列表 - 我的小说网站'
+  title: '全部作品 - 呆书网'
 })
 </script>
