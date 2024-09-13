@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <p>&copy; 2024 My Novel Website. All rights reserved.</p>
+    <p>&copy; {{ new Date().getFullYear() }} Nerdy Novel Website. All rights reserved.</p>
     <a class="back-to-top" @click="backToTop()"><i class="fas fa-arrow-up"></i></a>
   </footer>
 </template>
