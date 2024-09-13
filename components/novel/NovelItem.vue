@@ -143,4 +143,8 @@ defineProps({
   transition: color 0.3s ease;
   color: var(--primary-button-color);
 }
+
+#app-container.dark-mode .novel {
+  background: var(--novel-background-color-dark);
+}
 </style>

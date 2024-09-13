@@ -10,12 +10,11 @@
           <li><a :href="`/novels`">全部作品</a></li>
         </ul>
       </nav>
-      <div id="theme-toggle" class="theme-toggle">
-        <i class="fas fa-sun"></i>
-      </div>
+      <ToggleDarkModeButton />
     </div>
   </header>
 </template>
+
 
 <style lang="css" scoped>
 header {
@@ -76,7 +75,11 @@ nav ul li a:hover {
   color: var(--primary-button-color);
 }
 
-body.dark-mode header {
+#app-container.dark-mode header {
+  background: var(--header-bg-dark);
+}
+
+#app-container.dark-mode header {
   background: var(--header-bg-dark);
 }
 </style>

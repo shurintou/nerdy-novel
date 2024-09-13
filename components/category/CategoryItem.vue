@@ -27,9 +27,20 @@ defineProps({
 }
 
 .category h5.underline {
+  position: relative;
   margin: 0;
   padding-bottom: 5px;
   border-bottom: 1px solid #000;
+}
+
+.category h5.underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--text-color-light);
 }
 
 .category a {
@@ -48,5 +59,13 @@ defineProps({
   .category-list {
     grid-template-columns: 1fr;
   }
+}
+
+#app-container.dark-mode .underline::after {
+  background-color: var(--text-color-dark);
+}
+
+#app-container.dark-mode .category {
+  background: var(--novel-background-color-dark);
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <p>&copy; 2024 My Novel Website. All rights reserved.</p>
+    <p>&copy; {{ new Date().getFullYear() }} Nerdy Novel Website. All rights reserved.</p>
     <a class="back-to-top" @click="backToTop()"><i class="fas fa-arrow-up"></i></a>
   </footer>
 </template>
@@ -47,5 +47,10 @@ footer .back-to-top {
 footer .back-to-top:hover {
   cursor: pointer;
   background-color: #777;
+}
+
+#app-container.dark-mode footer {
+  color: var(--text-color-dark);
+  background-color: var(--background-color-dark);
 }
 </style>
