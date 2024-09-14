@@ -1,3 +1,6 @@
+# make is for local development only
+# for production deployment, use the deploy.sh
+
 dev:
 	npm run dev
 
