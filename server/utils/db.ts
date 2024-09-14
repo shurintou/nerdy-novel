@@ -22,5 +22,5 @@ export default async function getDBClient() {
         });
         return dbClient;
     }
-    return client
+    return dbClient
 }
