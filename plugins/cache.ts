@@ -11,7 +11,7 @@ export default defineNuxtPlugin(() => {
   const cache = $fetch.create({
     async onResponse({ request, response }) {
       if (shouldUseCache) {
-        const fullPath = path.join(cacheDir, dateFormatted, request.toString() + '.json')
+        const fullPath = path.join(cacheDir, dateFormatted, request.toString().replace('?', '') + '.json')
         const dir = path.dirname(fullPath)
         if (!fs.existsSync(dir)) {
           fs.mkdirSync(dir, { recursive: true })
