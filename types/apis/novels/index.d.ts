@@ -11,3 +11,16 @@ export interface NovelWithCurrentChapterContent extends Novel {
 export interface NovelMetaData extends Omit<Novel, 'chapters' | 'createdAt'> { }
 
 export interface NovelBasicMetaData extends Omit<Novel, 'chapters' | 'createdAt' | 'imageUrl' | 'imageAlt' | 'description'> { }
+
+export interface CategoryNovelsParams {
+  category: Array<string>
+  page: number
+}
+
+export interface CategoryNovelsData {
+  category: Array<string>
+  novels: Array<NovelBasicMetaData>
+  total: number
+  page: number
+  totalPages: number
+}
