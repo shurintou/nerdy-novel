@@ -19,7 +19,7 @@ import type { NovelWithCurrentChapterContent, Comment } from '@/types/apis/novel
 
 const route = useRoute()
 const novelId = route.params.id
-const { data: novel } = await useFetch<NovelWithCurrentChapterContent>(`/api/novels/${novelId}`)
+const { data: novel } = await useCacheFetch<NovelWithCurrentChapterContent>(`/api/novels/${novelId}`)
 
 const title = computed(() => novel.value?.title ? `${novel.value.title} - 我的小说网站` : '我的小说网站')
 const comments = ref<Comment[]>([])

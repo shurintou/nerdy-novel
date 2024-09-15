@@ -5,8 +5,7 @@
 <script lang="ts" setup>
 defineProps({
   text: {
-    type: String,
-    required: true
+    default: '待分类'
   }
 })
 </script>

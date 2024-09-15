@@ -14,8 +14,7 @@ const props = defineProps({
     required: true
   }
 })
-
-const { data: categoryNovels, error } = await useFetch<CategoryNovels[]>(props.apiPath)
+const { data: categoryNovels, error } = await useCacheFetch<CategoryNovels[]>(props.apiPath)
 if (error.value) {
   console.error('Error fetching novels:', error.value)
 }
