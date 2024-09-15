@@ -4,22 +4,28 @@ let dbClient = null
 
 export default async function getDBClient() {
     if (dbClient === null) {
+        // must set accordingly, check: https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars.html
         const accessKeyId = process.env.AWS_ACCESS_KEY_ID
         const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY
 
-        dbClient = await new DynamoDBClient({
+        const env = process.env.NODE_ENV
+
+        let param = {
             region: "ap-northeast-1",
-            // region: 'local', // Can be any valid AWS region
-            // endpoint: 'http://localhost:8000', // Connect to local DynamoDB
-            // credentials: {
-            //     accessKeyId: 'dummyAccessKeyId', // These values can be anything when using local DynamoDB
-            //     secretAccessKey: 'dummySecretAccessKey',
-            // },
-            credentials: {
-                accessKeyId, // These values can be anything when using local DynamoDB
-                secretAccessKey,
-            },
-        });
+        }
+
+        // for local app accessing the live db
+        if (env == "development") {
+            param = {
+                ...param,
+                credentials: {
+                    accessKeyId, // These values can be anything when using local DynamoDB
+                    secretAccessKey,
+                },
+            }
+        }
+
+        dbClient = await new DynamoDBClient(param);
         return dbClient;
     }
     return dbClient
