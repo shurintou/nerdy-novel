@@ -4,18 +4,16 @@ let dbClient = null
 
 export default async function getDBClient() {
     if (dbClient === null) {
-        // must set accordingly, check: https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars.html
-        const accessKeyId = process.env.AWS_ACCESS_KEY_ID
-        const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY
-
         const env = process.env.NODE_ENV
-
         let param = {
             region: "ap-northeast-1",
         }
 
         // for local app accessing the live db
         if (env == "development") {
+            // must set accordingly, check: https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars.html
+            const accessKeyId = process.env.AWS_ACCESS_KEY_ID
+            const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY
             param = {
                 ...param,
                 credentials: {
