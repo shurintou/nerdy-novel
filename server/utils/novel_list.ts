@@ -11,7 +11,8 @@ export async function getNovelList() {
         const client = await getDBClient()
         // TODO: Count can be used for pagination
         const {$metadata: {httpStatusCode}, Count, Items} = await client.send(new ScanCommand({
-            TableName: "nerdy-novel"
+            TableName: "nerdy-novel",
+            Limit: 16, // do not show all
         }))
 
         // TODO: handle the 4XX/5XX error case
@@ -39,7 +40,7 @@ export async function getNovelList() {
         novels.push({
             id,
             author: author_id,
-            category: genre[0], // TODO: genre is a list
+            category: genre,
             description: synopsis,
             title,
             imageUrl: 'https://bookcover.yuewen.com/qdbimg/349573/1035114945/90.webp',
