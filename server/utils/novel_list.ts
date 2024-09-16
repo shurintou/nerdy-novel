@@ -40,7 +40,7 @@ export async function getNovelList() {
         novels.push({
             id,
             author: author_id,
-            category: genre,
+            categories: genre,
             description: synopsis,
             title,
             imageUrl: 'https://bookcover.yuewen.com/qdbimg/349573/1035114945/90.webp',

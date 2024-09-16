@@ -92,7 +92,7 @@ export default defineEventHandler(async (event: H3EventContext): NovelWithCurren
     return {
         id: `${id}`,
         author: author_id,
-        category: genre,
+        categories: genre,
         description: synopsis,
         title,
         chapters,

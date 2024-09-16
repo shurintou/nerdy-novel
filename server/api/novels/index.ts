@@ -8,7 +8,7 @@ export default defineEventHandler(async (event: H3Event<EventHandlerRequest>): P
   const { category, page } = getQuery(event) as CategoryNovelsParams
   const correctPage = page || 1
   const novels: Array<NovelBasicMetaData> = []
-  const outputCategories = category ? category.toString().replaceAll(',', '') : categoriesMaster[0]
+  const outputCategories = category ? category : [categoriesMaster[0]]
   let outputCount = 0
   for (let i = 1; i <= sizePerPage; i++) {
     if (outputCount < sizePerPage) {
@@ -17,7 +17,7 @@ export default defineEventHandler(async (event: H3Event<EventHandlerRequest>): P
       novels.push({
         id: `${index}`,
         author: isEven ? '王二狗' : '张狗蛋',
-        category: outputCategories,
+        categories: outputCategories,
         title: `${outputCategories}小说${index}`,
         updatedAt: '2024/09/12',
       })

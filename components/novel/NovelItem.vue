@@ -12,7 +12,7 @@
       </div>
       <div class="novel-meta">
         <p>
-          <BaseTag :text="novelData.category" />
+          <BaseTag v-for="category in novelData.categories" :text="category" />
         </p>
         <p><span class="novel-author">{{ novelData.author }}</span></p>
       </div>

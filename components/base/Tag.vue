@@ -16,10 +16,10 @@ defineProps({
   background-color: #e0e0e0;
   color: #333;
   border-radius: 12px;
-  padding: 4px 8px;
-  font-size: 0.75rem;
+  padding: 4px 6px;
+  font-size: 0.65rem;
   font-weight: bold;
-  margin-right: 5px;
+  margin-right: 2px;
   white-space: nowrap;
 }
 </style>
