@@ -1,24 +1,19 @@
-import fs from 'fs'
-import path from 'path'
-
 /** set it 'false' if you don't want to use cache */
 const useCache = true
-export const cacheDir = './.cache'
-export const dateFormatted = getDateFormatted()
 export const shouldUseCache = process.env.NODE_ENV === 'development' && import.meta.server && useCache
+export const cacheData: { [key: string]: any } = {}
 
 export default defineNuxtPlugin(() => {
   const cache = $fetch.create({
     async onResponse({ request, response }) {
+      const cacheKey = request.toString()
       if (shouldUseCache) {
-        const fullPath = path.join(cacheDir, dateFormatted, request.toString().replace('?', '') + '.json')
-        const dir = path.dirname(fullPath)
-        if (!fs.existsSync(dir)) {
-          fs.mkdirSync(dir, { recursive: true })
-        }
-        const cacheData = getCacheData(fullPath)
-        if (cacheData === null) {
-          writeCacheData(fullPath, response._data)
+        const cachedData = getCacheData(cacheKey)
+        if (cachedData === null) {
+          writeCacheData(cacheKey, response._data)
+        } else {
+          console.log('use cache data: ', cacheKey)
+          response._data = cachedData
         }
       }
     }
@@ -30,31 +25,16 @@ export default defineNuxtPlugin(() => {
   }
 })
 
-export function getDateFormatted() {
-  const date = new Date()
-  return date.getFullYear() + '' + (date.getMonth() + 1) + '' + (date.getDate())
-}
-
-export function checkCacheFile(filePath: string) {
-  return fs.existsSync(filePath)
-}
-
-export function readCacheFile(filePath: string) {
-  const rawData = fs.readFileSync(filePath, 'utf-8')
-  const data = JSON.parse(rawData)
-  return data
-}
-
-export function writeCacheData(filePath: string, data: any) {
+export function writeCacheData(key: string, data: any) {
   if (typeof data !== 'function') {
-    fs.writeFileSync(filePath, JSON.stringify(data))
-    console.log('create cache data: ', filePath)
+    cacheData[key as keyof object] = data
+    console.log('create cache data: ', key)
   }
 }
 
-export function getCacheData(filePath: string) {
-  if (checkCacheFile(filePath)) {
-    return readCacheFile(filePath)
+export function getCacheData(key: string): any {
+  if (Object.hasOwn(cacheData, key)) {
+    return cacheData[key as keyof object]
   }
   return null
 }
