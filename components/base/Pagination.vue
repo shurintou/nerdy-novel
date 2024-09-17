@@ -137,7 +137,8 @@ function handleSelectBlur(): void {
   .pagination-button,
   .pagination-number,
   .pagination-select {
-    font-size: 0.475rem;
+    font-size: 0.675rem;
+    padding: 4px 8px;
   }
 }
 
