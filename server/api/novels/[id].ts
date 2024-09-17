@@ -87,6 +87,7 @@ export default defineEventHandler(async (event: H3EventContext): NovelWithCurren
         title: {S: title},
         updated_at: {N: updatedAt},
         created_at: {N: createdAt},
+        img_url: {S: imageUrl},
     } = novel
 
     return {
@@ -97,7 +98,7 @@ export default defineEventHandler(async (event: H3EventContext): NovelWithCurren
         title,
         chapters,
         currentChapterContent: chapters[0].content, // TODO: redundant
-        imageUrl: 'https://bookcover.yuewen.com/qdbimg/349573/1028463573/90.webp',
+        imageUrl,
         imageAlt: `Novel Thumbnail ${id}`,
         createdAt,
         updatedAt,

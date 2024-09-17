@@ -34,6 +34,7 @@ export async function getNovelList() {
             author_id: {N: author_id},
             genre: {SS: genre},
             synopsis: {S: synopsis},
+            img_url: {S: imageUrl},
             title: {S: title},
             updated_at: {N: updated_at},
         } = v
@@ -43,7 +44,7 @@ export async function getNovelList() {
             categories: genre,
             description: synopsis,
             title,
-            imageUrl: 'https://bookcover.yuewen.com/qdbimg/349573/1035114945/90.webp',
+            imageUrl,
             imageAlt: `Novel Thumbnail ${id}`,
             updatedAt: new Date(updated_at).toDateString(),
         })
