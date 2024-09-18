@@ -28,6 +28,8 @@ const { isDarkMode } = useDarkMode()
   --text-color-dark: #f4f4f4;
   --novel-background-color-dark: #1e1e1e;
   --novel-background-color-light: #fff;
+  --filter-background-color-light: #f9f9f9;
+  --filter-background-color-dark: #1e1e1e;
   --primary-button-color: #ff6f61;
   --header-bg-light: linear-gradient(135deg, #6e45e2, #88d3ce);
   --header-bg-dark: linear-gradient(135deg, #4a3c9e, #6b9c8c);
