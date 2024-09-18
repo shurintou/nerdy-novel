@@ -115,7 +115,6 @@ function handleSelectBlur(): void {
   background-color: #f4f4f4;
   color: var(--text-color-light);
   cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
 }
 
 .pagination-button,
@@ -129,7 +128,6 @@ function handleSelectBlur(): void {
   margin: 0 4px;
   cursor: pointer;
   font-size: 0.775rem;
-  transition: background-color 0.3s, color 0.3s;
 }
 
 @media (max-width: 768px) {

@@ -33,6 +33,13 @@ const { isDarkMode } = useDarkMode()
   --header-bg-dark: linear-gradient(135deg, #4a3c9e, #6b9c8c);
   --footer-bg-light: #d3d3d3;
   --footer-bg-dark: #333;
+  --background-color-transition: background-color 1s ease;
+  --color-transition: color 1s ease;
+}
+
+* {
+  transition: var(--color-transition);
+  transition: var(--background-color-transition);
 }
 
 body {
@@ -41,7 +48,6 @@ body {
   padding: 0;
   background-color: var(--background-color-light);
   color: var(--text-color-light);
-  transition: background-color 0.3s, color 0.3s;
 }
 
 #app-container.dark-mode {

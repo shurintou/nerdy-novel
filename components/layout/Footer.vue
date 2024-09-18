@@ -41,7 +41,6 @@ footer .back-to-top {
   padding: 5px 10px;
   background-color: #555;
   border-radius: 5px;
-  transition: background-color 0.3s;
 }
 
 footer .back-to-top:hover {

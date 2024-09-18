@@ -51,7 +51,6 @@ defineProps({
 }
 
 .category a:hover {
-  transition: color 0.3s ease;
   color: var(--primary-button-color);
 }
 

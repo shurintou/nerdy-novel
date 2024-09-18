@@ -27,7 +27,6 @@ const toggleDarkModeHandler = function () {
   border: none;
   cursor: pointer;
   font-size: 24px;
-  transition: color 0.3s;
 }
 
 .theme-toggle:focus {
