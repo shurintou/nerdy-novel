@@ -6,22 +6,30 @@
   <div class="main-content">
     <section class="latest-novels">
       <h2 class="underline">最新小说</h2>
-      <NovelList :apiPath="novelsAPI" />
+      <BaseGrid>
+        <NovelItem v-for="item in novels" :key="item.id" :novelData="item" />
+      </BaseGrid>
     </section>
 
     <section class="popular-categories">
       <h2>热门分类</h2>
-      <CategoryList :apiPath="categoriesAPI" />
+      <BaseGrid>
+        <CategoryItem v-for="item in categoryNovels" :key="item.id" :data="item" />
+      </BaseGrid>
     </section>
   </div>
 </template>
 
-<script setup>
-import SlideComponent from '~/components/SlideComponent.vue';
+<script lang="ts" setup>
+import type { NovelMetaData } from '@/types/apis/novels/'
+import type { CategoryNovels } from '@/types/apis/home/'
 
 const slideAPI = '/api/home/slides'
 const novelsAPI = '/api/home/novels'
 const categoriesAPI = '/api/home/categories'
+
+const { data: novels } = await useCacheFetch<Array<NovelMetaData>>(novelsAPI)
+const { data: categoryNovels } = await useCacheFetch<CategoryNovels[]>(categoriesAPI)
 
 useHead({
   title: '主页 - 呆书网'
