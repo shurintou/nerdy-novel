@@ -34,8 +34,12 @@ const clickHandler = (novelId: string) => {
   display: flex;
   flex-direction: column;
   height: 60px;
-  margin: 8px;
+  margin: 4px;
   cursor: pointer;
+}
+
+.basic-novel-list-item:last-child {
+  margin-bottom: 16px;
 }
 
 .novel-title {

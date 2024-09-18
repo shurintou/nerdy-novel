@@ -3,11 +3,10 @@
     <NovelFilter />
 
     <div v-if="selectedCategory" class="novel-list-wrapper">
-      <div class="novel-list">
+      <BaseList class="novel-list">
         <BaseUnderline :level="3">小说列表</BaseUnderline>
         <BasicNovelItem v-for="novel in novels" :key="novel.id" :novel-data="novel" />
-      </div>
-
+      </BaseList>
       <pagination :total="totalPages" :current="page" @page-changed="fetchNovels" />
     </div>
   </section>
