@@ -1,6 +1,8 @@
 <template>
   <div class="category">
-    <h5 class="underline">{{ data.categoryTitle }}</h5>
+    <BaseUnderline :level="5" style="padding-bottom: 5px;margin: 0;">
+      {{ data.categoryTitle }}
+    </BaseUnderline>
     <a v-for="novelBasicMetaData in data.novelBasicMetaDataList" :href="`/novels/${novelBasicMetaData.id}`">
       <BaseTag :text="novelBasicMetaData.category" />
       {{ novelBasicMetaData.title }}
@@ -26,23 +28,6 @@ defineProps({
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.category h5.underline {
-  position: relative;
-  margin: 0;
-  padding-bottom: 5px;
-  border-bottom: 1px solid #000;
-}
-
-.category h5.underline::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 1px;
-  background-color: var(--text-color-light);
-}
-
 .category a {
   display: block;
   text-decoration: none;
@@ -58,10 +43,6 @@ defineProps({
   .category-list {
     grid-template-columns: 1fr;
   }
-}
-
-#app-container.dark-mode .underline::after {
-  background-color: var(--text-color-dark);
 }
 
 #app-container.dark-mode .category {
