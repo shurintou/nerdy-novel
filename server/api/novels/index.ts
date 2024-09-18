@@ -8,7 +8,7 @@ export default defineEventHandler(async (event: H3Event<EventHandlerRequest>): P
   const { category, page } = getQuery(event) as CategoryNovelsParams
   const correctPage = page || 1
   const novels: Array<NovelBasicMetaData> = []
-  const outputCategories = category ? category : [categoriesMaster[0]]
+  const outputCategories = category.length > 0 ? category.split(',') : [categoriesMaster[0]]
   let outputCount = 0
   for (let i = 1; i <= sizePerPage; i++) {
     if (outputCount < sizePerPage) {
@@ -25,7 +25,7 @@ export default defineEventHandler(async (event: H3Event<EventHandlerRequest>): P
     }
   }
   return {
-    category: category,
+    category: outputCategories,
     page: correctPage,
     totalPages: 10,
     total: 10 * sizePerPage,

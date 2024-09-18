@@ -13,7 +13,8 @@ export interface NovelMetaData extends Omit<Novel, 'chapters' | 'createdAt'> { }
 export interface NovelBasicMetaData extends Omit<Novel, 'chapters' | 'createdAt' | 'imageUrl' | 'imageAlt' | 'description'> { }
 
 export interface CategoryNovelsParams {
-  category: Array<string>
+  /** @type {string} The format is like: '玄幻, 穿越, 仙侠' */
+  category: string
   page: number
 }
 
