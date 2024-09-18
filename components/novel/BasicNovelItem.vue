@@ -70,8 +70,4 @@ const clickHandler = (novelId: string) => {
 #app-container.dark-mode .novel-title {
   color: var(--text-color-dark);
 }
-
-#app-container.dark-mode .novel-author {}
-
-#app-container.dark-mode .novel-updated {}
 </style>
