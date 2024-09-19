@@ -42,7 +42,7 @@ export async function getNovelList(): NovelList {
             updated_at: {N: updated_at},
         } = v
 
-        const updatedAt = new Date(Number(updated_at)).toDateString()
+        const updatedAt = new Date(Number(updated_at))
         novels.push({
             id,
             author: author_id,
