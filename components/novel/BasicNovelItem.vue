@@ -5,14 +5,14 @@
       {{ novelData.title }}
     </div>
     <div class="novel-author">{{ novelData.author }}</div>
-    <div class="novel-updated">{{ novelData.updatedAt }}</div>
+    <div class="novel-updated">{{ formattedDate }}</div>
   </div>
 </template>
 
 <script lang="ts" setup>
 import type { NovelBasicMetaData } from '@/types/apis/novels/'
 
-defineProps({
+const props = defineProps({
   novelData: {
     type: Object as PropType<NovelBasicMetaData>,
     required: true
@@ -22,6 +22,11 @@ defineProps({
 const clickHandler = (novelId: string) => {
   window.location.href = `/novels/${novelId}`
 }
+
+const formattedDate = computed(() => {
+  const updatedDate = new Date(props.novelData.updatedAt)
+  return `${updatedDate.getFullYear()}/${updatedDate.getMonth()}/${updatedDate.getDate()}`
+})
 </script>
 
 <style lang="css" scoped>
