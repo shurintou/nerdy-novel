@@ -38,6 +38,11 @@ const clickHandler = (novelId: string) => {
   cursor: pointer;
 }
 
+.basic-novel-list-item:hover {
+  background-color: #f0f0f0;
+}
+
+
 .basic-novel-list-item:last-child {
   margin-bottom: 16px;
 }
@@ -69,6 +74,10 @@ const clickHandler = (novelId: string) => {
 
 #app-container.dark-mode .basic-novel-list-item {
   background-color: var(--novel-background-color-dark);
+}
+
+#app-container.dark-mode .basic-novel-list-item:hover {
+  background-color: #3a3a3a;
 }
 
 #app-container.dark-mode .novel-title {
