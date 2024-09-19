@@ -1,7 +1,7 @@
 <template>
   <header>
     <div class="main-header header-title">
-      <h1 class="home-page-navigation" @click="homePageNavigation">呆书网</h1>
+      <h1><span class="home-page-navigation" @click="homePageNavigation">呆书网</span></h1>
     </div>
     <div class="header-content">
       <nav>
