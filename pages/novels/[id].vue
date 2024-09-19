@@ -1,42 +1,21 @@
 <template>
   <div>
     <h1>{{ novel?.title }}</h1>
-    <div v-html="novel?.currentChapterContent"></div>
 
-    <div v-if="comments">
-      <h2>评论</h2>
-      <ul>
-        <li v-for="comment in comments" :key="comment.id">
-          <p v-html="comment.userName + '说：' + comment.text"></p>
-        </li>
-      </ul>
-    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import type { NovelWithCurrentChapterContent, Comment } from '@/types/apis/novels/'
+import type { Novel, } from '@/types/apis/novels/'
 
 const route = useRoute()
 const novelId = route.params.id
-const { data: novel } = await useCacheFetch<NovelWithCurrentChapterContent>(`/api/novels/${novelId}`)
+const { data: novel } = await useCacheFetch<Novel>(`/api/novels/${novelId}`)
 
-const title = computed(() => novel.value?.title ? `${novel.value.title} - 我的小说网站` : '我的小说网站')
-const comments = ref<Comment[]>([])
+const title = computed(() => novel.value?.title ? `${novel.value.title} - 呆说网` : '呆说网')
 
 useHead({
   title: title
-})
-
-onMounted(async () => {
-  try {
-    const commentsResponse = await fetch(`/api/novels/${novelId}/comments`)
-    if (!commentsResponse.ok) throw new Error('Failed to fetch comments data')
-    const commentsData = await commentsResponse.json()
-    comments.value = commentsData
-  } catch (error) {
-    console.error(error)
-  }
 })
 
 </script>
