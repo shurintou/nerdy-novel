@@ -40,27 +40,4 @@ useHead({
 .novel-list {
   padding: 0px 15px
 }
-
-.tag {
-  display: inline-block;
-  background-color: #e0e0e0;
-  color: #333;
-  border-radius: 12px;
-  padding: 4px 8px;
-  font-size: 0.75rem;
-  font-weight: bold;
-  margin-right: 5px;
-  white-space: nowrap;
-}
-
-.tag:hover {
-  background-color: #ddd;
-  cursor: pointer;
-}
-
-.highlight {
-  background-color: #ff6f61;
-  border-color: #ff6f61;
-  color: white;
-}
 </style>
