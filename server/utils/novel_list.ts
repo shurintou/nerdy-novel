@@ -1,10 +1,12 @@
 import {ScanCommand} from "@aws-sdk/client-dynamodb";
-import {NovelMetaData} from "~/types/apis/home";
+import {NovelList, NovelMetaData} from "~/types/apis/home";
 import getDBClient from "~/server/utils/db";
 
-export async function getNovelList() {
+
+export async function getNovelList(): NovelList {
     // var definition
     let data = []
+    let total = 0
 
     // data fetching
     try {
@@ -20,6 +22,7 @@ export async function getNovelList() {
             return httpStatusCode
         }
 
+        total = Count
         data = Items
     } catch (e) {
         console.log(`failed to fetch novel list: ${e}`)
@@ -49,5 +52,8 @@ export async function getNovelList() {
             updatedAt: new Date(updated_at).toDateString(),
         })
     }
-    return novels
+    return {
+        total,
+        novels,
+    }
 }

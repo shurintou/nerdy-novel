@@ -2,6 +2,11 @@ import { Novel } from '@/types/models/novel.d.ts'
 
 export type { Novel }
 
+export interface NovelList {
+  novels: Array<NovelBasicMetaData>
+  total: number
+}
+
 export interface NovelMetaData extends Omit<Novel, 'chapters' | 'createdAt'> { }
 
 export interface NovelBasicMetaData {
