@@ -38,10 +38,9 @@ export async function getNovelList(): Promise<NovelList> {
             synopsis: { S: synopsis },
             img_url: { S: imageUrl },
             title: { S: title },
-            updated_at: { N: updated_at },
+            updated_at: { N: updatedAt },
         } = v
 
-        const updatedAt = updated_at
         novels.push({
             id,
             author: author_id,
