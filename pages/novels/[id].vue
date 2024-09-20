@@ -1,7 +1,13 @@
 <template>
-  <div>
-    <h1>{{ novel?.title }}</h1>
-
+  <div class="novel-container">
+    <NovelCard :novel-data="novel"></NovelCard>
+  </div>
+  <div class="chapter-container">
+    <BaseUnderline :level="3">目录</BaseUnderline>
+    <BaseGrid :min-content="'350px'" :gap="'8px'">
+      <NovelChapter v-for="(chapter, index) in novel.chapters" :key="chapter.id" :chapter-number="index + 1"
+        :chapter-data="chapter" />
+    </BaseGrid>
   </div>
 </template>
 
@@ -19,3 +25,15 @@ useHead({
 })
 
 </script>
+
+<style lang="css" scoped>
+.novel-container {
+  margin: 20px 10px 10px 10px;
+}
+
+.chapter-container {
+  max-width: 1200px;
+  margin: 0px auto 20px auto;
+  padding: 0px 10px;
+}
+</style>
