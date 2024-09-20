@@ -3,7 +3,7 @@ import { Novel } from '@/types/models/novel.d.ts'
 export type { Novel }
 
 export interface NovelList {
-  novels: Array<NovelBasicMetaData>
+  novels: Array<NovelMetaData>
   total: number
 }
 

@@ -3,7 +3,7 @@ import { Novel, Chapter } from '@/types/apis/novels/'
 import getDBClient from "~/server/utils/db";
 import { QueryCommand } from "@aws-sdk/client-dynamodb";
 
-export default defineEventHandler(async (event: H3EventContext): Novel => {
+export default defineEventHandler(async (event: H3EventContext): Promise<Novel> => {
     // fetch novel meta
     const { id } = event.context.params as { id: string }
     let novel
@@ -28,13 +28,15 @@ export default defineEventHandler(async (event: H3EventContext): Novel => {
         }
 
         if (!Count) {
-            return 404
+            throw createError({
+                statusCode: 404,
+                statusMessage: '数据未找到'
+            })
         }
 
         novel = Items[0]
     } catch (e) {
         console.log(e)
-        return
     }
 
     // fetch novel chapters
@@ -56,7 +58,10 @@ export default defineEventHandler(async (event: H3EventContext): Novel => {
             return httpStatusCode
         }
         if (!Count) {
-            return 404
+            throw createError({
+                statusCode: 404,
+                statusMessage: '数据未找到'
+            })
         }
 
         for (let chapter of Items) {
@@ -77,7 +82,6 @@ export default defineEventHandler(async (event: H3EventContext): Novel => {
         }
     } catch (e) {
         console.log(e)
-        return
     }
 
     const {
