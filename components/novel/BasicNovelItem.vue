@@ -24,7 +24,7 @@ const clickHandler = (novelId: string) => {
 }
 
 const formattedDate = computed(() => {
-  const updatedDate = new Date(props.novelData.updatedAt)
+  const updatedDate = new Date(parseInt(props.novelData.updatedAt))
   return `${updatedDate.getFullYear()}/${updatedDate.getMonth()}/${updatedDate.getDate()}`
 })
 </script>
