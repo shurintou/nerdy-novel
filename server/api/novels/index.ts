@@ -1,6 +1,6 @@
 import { H3Event, EventHandlerRequest } from 'h3'
 import { CategoryNovelsData, CategoryNovelsParams } from '@/types/apis/novels/'
-import { getNovelList } from "~/server/utils/novel_list"
+import { getNovelList } from "~/server/utils/novel"
 
 const sizePerPage = 30
 

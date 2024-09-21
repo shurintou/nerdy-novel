@@ -1,6 +1,7 @@
 import {ScanCommand} from "@aws-sdk/client-dynamodb";
 import {NovelList, NovelMetaData} from "~/types/apis/home";
 import getDBClient from "~/server/utils/db";
+import {getAuthorById} from "~/server/utils/author";
 
 const genreKey = "#genre"
 const genre1 = ":genre1"
@@ -83,16 +84,22 @@ export async function getNovelList(genre: string[]): Promise<NovelList> {
             updated_at: {N: updatedAt},
         } = v
 
-        novels.push({
+        const novel = {
             id,
-            author: author_id,
             categories: genre,
             description: synopsis,
             title,
             imageUrl,
             imageAlt: `Novel Thumbnail ${id}`,
             updatedAt,
-        })
+        }
+
+        const author = await getAuthorById(author_id)
+        if (author) {
+            novel.author = author.name
+        }
+
+        novels.push(novel)
     }
     return {
         total,
