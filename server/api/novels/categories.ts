@@ -1,12 +1,26 @@
-
-export const categoriesMaster = [
-  "玄幻", "奇幻", "修真", "武侠", "科幻",
-  "悬疑", "推理", "灵异", "恐怖", "都市",
-  "言情", "历史", "军事", "游戏", "竞技",
-  "同人", "穿越", "重生", "短篇", "冒险"
-]
+import getDBClient from "~/server/utils/db";
+import {ScanCommand} from "@aws-sdk/client-dynamodb";
 
 export default defineEventHandler(async (): Promise<Array<string>> => {
-  return categoriesMaster
-})
+  const client = await getDBClient()
+  // TODO: Count can be used for pagination
+  const { $metadata: { httpStatusCode }, Items } = await client.send(new ScanCommand({
+    TableName: "nerdy-novel-genre",
+  }))
 
+  // TODO: handle the 4XX/5XX error case
+  if (httpStatusCode !== 200) {
+    return httpStatusCode
+  }
+
+  const output: Array<string> = []
+  for (let v of Items) {
+    const {
+      name: { S: name },
+    } = v
+
+    output.push(name)
+  }
+
+  return output
+})
