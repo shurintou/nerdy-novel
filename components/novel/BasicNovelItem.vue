@@ -1,11 +1,21 @@
 <template>
   <div class="basic-novel-list-item" @click="clickHandler(novelData.id)">
-    <div class="novel-title">
-      <BaseTag v-for="category in novelData.categories" :text="category" />
-      {{ novelData.title }}
+    <img class="cover-image" :src="novelData.imageUrl" :alt="novelData.imageAlt" />
+    <div class="meta-info">
+      <div class="meta-top">
+        <h3 class="novel-title">{{ novelData.title }}</h3>
+        <div class="category-tag">
+          <BaseTag v-for="category in novelData.categories" :text="category" />
+        </div>
+      </div>
+      <p class="novel-description">
+        {{ novelData.description }}
+      </p>
+      <div class="meta-bottom">
+        <span class="author">{{ novelData.author }}</span>
+        <span class="update-date">更新于：{{ formattedDate }}</span>
+      </div>
     </div>
-    <div class="novel-author">{{ novelData.author }}</div>
-    <div class="novel-updated">{{ formattedDate }}</div>
   </div>
 </template>
 
@@ -30,6 +40,99 @@ const formattedDate = computed(() => {
 </script>
 
 <style lang="css" scoped>
+.cover-image {
+  width: 120px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 5px;
+  margin-right: 20px;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cover-image:hover {
+  transform: scale(1.1);
+}
+
+.meta-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.meta-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.novel-title {
+  font-size: 1.25rem;
+  color: var(--text-color-light);
+  font-weight: bold;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  overflow: hidden;
+}
+
+.category-tag {
+  padding: 0.25rem 0.5rem;
+}
+
+.novel-description {
+  margin: 0.5rem 0;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+}
+
+.meta-bottom {
+  display: flex;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+.author,
+.update-date {
+  font-size: 0.775rem;
+  color: #999;
+}
+
+.update-date {
+  padding: 0rem 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .cover-image {
+    margin-right: 0.675rem;
+  }
+
+  .category-tag {
+    padding: 0.1rem 0rem;
+  }
+
+  .novel-description {
+    margin: 0.1rem 0;
+  }
+
+  .update-date {
+    padding: 0;
+  }
+
+  .novel-title {
+    font-size: 1rem;
+  }
+
+  .meta-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
 .basic-novel-list-item {
   background-color: var(--novel-background-color-light);
   border-radius: 8px;
@@ -37,9 +140,7 @@ const formattedDate = computed(() => {
   padding: 8px;
   position: relative;
   display: flex;
-  flex-direction: column;
-  height: 60px;
-  margin: 4px;
+  margin: 6px 2px;
   cursor: pointer;
 }
 
@@ -50,31 +151,6 @@ const formattedDate = computed(() => {
 
 .basic-novel-list-item:last-child {
   margin-bottom: 16px;
-}
-
-.novel-title {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  font-size: 0.975rem;
-  font-weight: bold;
-  color: var(--text-color-light);
-}
-
-.novel-author {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  font-size: 0.775rem;
-  color: #666;
-}
-
-.novel-updated {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  font-size: 0.775rem;
-  color: #999;
 }
 
 #app-container.dark-mode .basic-novel-list-item {
