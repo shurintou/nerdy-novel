@@ -1,6 +1,6 @@
 <template>
   <div class="basic-novel-list-item drop-shadow-md rounded flex mb-2 p-3" @click="clickHandler(novelData.id)">
-    <img class="novel-thumbnail mr-3 rounded" :src="novelData.imageUrl" :alt="novelData.imageAlt" >
+    <img class="novel-thumbnail mr-3 rounded" :src="novelData.imageUrl" :alt="novelData.imageAlt">
 
     <div class="flex-auto flex flex-col justify-between">
       <div class="flex">
@@ -31,11 +31,11 @@
 </template>
 
 <script lang="ts" setup>
-import type { NovelBasicMetaData } from '@/types/apis/novels/'
+import type { NovelMetaData } from '@/types/apis/novels/'
 
 const props = defineProps({
   novelData: {
-    type: Object as PropType<NovelBasicMetaData>,
+    type: Object as PropType<NovelMetaData>,
     required: true
   }
 })

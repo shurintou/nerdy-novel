@@ -16,7 +16,7 @@ export interface CategoryNovelsParams {
 
 export interface CategoryNovelsData {
   category: Array<string>
-  novels: Array<NovelBasicMetaData>
+  novels: Array<NovelMetaData>
   total: number
   page: number
   totalPages: number

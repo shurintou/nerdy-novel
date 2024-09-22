@@ -13,13 +13,13 @@
 </template>
 
 <script lang="ts" setup>
-import type { NovelBasicMetaData, CategoryNovelsData } from '@/types/apis/novels/'
+import type { NovelMetaData, CategoryNovelsData } from '@/types/apis/novels/'
 import Pagination from '@/components/base/Pagination.vue'
 import BasicNovelItem from '~/components/novel/BasicNovelItem.vue';
 
 const totalPages = ref(0)
 const { page, selectedCategory, getNovelFilterSearchQuery, fetchNovels } = useNovelFilter()
-const novels = ref<Array<NovelBasicMetaData>>([])
+const novels = ref<Array<NovelMetaData>>([])
 
 const { data } = await useCacheFetch<CategoryNovelsData>(`/api/novels?${getNovelFilterSearchQuery()}`)
 novels.value = data.value?.novels || []
