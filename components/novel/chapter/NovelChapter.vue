@@ -25,7 +25,8 @@ const chapterDisplayText = computed(() => '第' + props.chapterNumber + '章' + 
 .chapter-link {
   padding: 10px 10px;
   margin: 0;
-  background-color: var(--chapter-background-color-light);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background-color: var(--novel-background-color-light);
   border-radius: 8px;
   text-decoration: none;
   color: var(--text-color-light);
