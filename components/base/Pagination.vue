@@ -1,7 +1,8 @@
 <template>
   <div class="pagination">
     <div class="pagination-numbers">
-      <button :class="['pagination-number',]" :disabled="total === 1 || current === 1" @click="goToPage(1)">
+      <button v-if="showBothEnd" :class="['pagination-number',]" :disabled="total === 1 || current === 1"
+        @click="goToPage(1)">
         {{ firstPageText }}
       </button>
 
@@ -11,7 +12,7 @@
 
       <button @click="nextPage" :disabled="current === total" class="pagination-button">下一{{ unit }}</button>
 
-      <button v-if="total > 1" :class="['pagination-number',]" :disabled="current === total" @click="goToPage(total)">
+      <button v-if="showBothEnd" :class="['pagination-number',]" :disabled="current === total" @click="goToPage(total)">
         {{ lastPageText }}
       </button>
 
@@ -50,6 +51,10 @@ const props = defineProps({
   selectText: {
     type: String,
     default: '跳转'
+  },
+  showBothEnd: {
+    type: Boolean,
+    default: true,
   },
 })
 

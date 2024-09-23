@@ -5,17 +5,15 @@
     <div v-if="selectedCategory" class="novel-list-wrapper">
       <BaseList class="novel-list">
         <BaseUnderline :level="3">小说列表</BaseUnderline>
-        <BasicNovelItem v-for="novel in novels" :key="novel.id" :novel-data="novel" />
+        <NovelBasicNovelItem v-for="novel in novels" :key="novel.id" :novel-data="novel" />
       </BaseList>
-      <pagination :total="totalPages" :current="page" @page-changed="fetchNovels" />
+      <BasePagination :total="totalPages" :current="page" @page-changed="fetchNovels" />
     </div>
   </section>
 </template>
 
 <script lang="ts" setup>
 import type { NovelMetaData, CategoryNovelsData } from '@/types/apis/novels/'
-import Pagination from '@/components/base/Pagination.vue'
-import BasicNovelItem from '~/components/novel/BasicNovelItem.vue';
 
 const totalPages = ref(0)
 const { page, selectedCategory, getNovelFilterSearchQuery, fetchNovels } = useNovelFilter()
