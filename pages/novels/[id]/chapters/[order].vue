@@ -23,6 +23,12 @@ function fetchChapter(page = 1) {
   const newUrl = currentUrl.replace(/(chapters\/)\d+/, `$1${page}`)
   window.location.href = newUrl
 }
+
+const title = computed(() => novelData.value?.title ? `${novelData.value.title} 第${chapterOrder}章 - 呆说网` : '呆说网')
+
+useHead({
+  title: title
+})
 </script>
 
 <style lang="css" scoped>
