@@ -1,4 +1,5 @@
 <template>
+  <BaseBreadCrumb />
   <div class="novel-container">
     <BaseUnderline :level="2">第{{ chapterOrder }}章</BaseUnderline>
     <div class="novel-content" v-html="novelData.chapters[chapterOrder - 1].content">
@@ -10,11 +11,12 @@
 
 <script lang="ts" setup>
 import type { Novel } from '@/types/apis/novels/'
-
+const { updateNovelTitle } = useBreadCrumb()
 const route = useRoute()
 const novelId = route.params.id || ''
 const chapterOrder = parseInt(route.params.order as string) || 1
 const { data: novelData } = await useCacheFetch<Novel>(`/api/novels/${novelId}/chapters/${chapterOrder}`)
+updateNovelTitle(novelData.value.title)
 
 function fetchChapter(page = 1) {
   const currentUrl = window.location.href
@@ -26,7 +28,7 @@ function fetchChapter(page = 1) {
 <style lang="css" scoped>
 .novel-container {
   max-width: 1200px;
-  margin: 20px auto;
+  margin: 10px auto 20px auto;
   padding: 10px 20px;
   background-color: var(--chapter-background-color-light);
   border-radius: 8px;

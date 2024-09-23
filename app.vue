@@ -39,6 +39,8 @@ const { isDarkMode } = useDarkMode()
   --footer-bg-dark: #333;
   --background-color-transition: background-color 1s ease;
   --color-transition: color 1s ease;
+  --bread-crumb-link-color-light: #6c757d;
+  --bread-crumb-link-color-dark: #adb5bd;
 }
 
 * {

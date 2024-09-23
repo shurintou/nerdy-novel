@@ -1,4 +1,5 @@
 <template>
+  <BaseBreadCrumb />
   <div class="novel-container">
     <NovelCard :novel-data="novel"></NovelCard>
   </div>
@@ -13,10 +14,12 @@
 
 <script setup lang="ts">
 import type { Novel, } from '@/types/apis/novels/'
+const { updateNovelTitle } = useBreadCrumb()
 
 const route = useRoute()
 const novelId = route.params.id
 const { data: novel } = await useCacheFetch<Novel>(`/api/novels/${novelId}`)
+updateNovelTitle(novel.value.title)
 
 const title = computed(() => novel.value?.title ? `${novel.value.title} - 呆说网` : '呆说网')
 
