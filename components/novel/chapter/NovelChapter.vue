@@ -17,7 +17,7 @@ const props = defineProps({
   }
 })
 
-const chapterLink = computed(() => `${useRoute().path}/chapters/${props.chapterData.id}`)
+const chapterLink = computed(() => `${useRoute().path}/chapters/${props.chapterNumber}`)
 const chapterDisplayText = computed(() => '第' + props.chapterNumber + '章' + (props.chapterData.title.length > 0 ? ': ' + props.chapterData.title : '')) 
 </script>
 
