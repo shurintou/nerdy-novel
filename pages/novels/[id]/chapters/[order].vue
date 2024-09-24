@@ -2,7 +2,7 @@
   <BaseBreadCrumb />
   <div class="novel-container">
     <BaseUnderline :level="2">第{{ chapterOrder }}章</BaseUnderline>
-    <div class="novel-content" v-html="novelData.chapters[chapterOrder - 1].content.replace(/\n/g, '<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;')">
+    <div class="novel-content" v-html="novelChapterContent">
     </div>
   </div>
   <BasePagination :total="novelData.chapters.length" :current="chapterOrder" :unit="'章'" :show-both-end="false"
@@ -17,6 +17,13 @@ const novelId = route.params.id || ''
 const chapterOrder = parseInt(route.params.order as string) || 1
 const { data: novelData } = await useCacheFetch<Novel>(`/api/novels/${novelId}/chapters/${chapterOrder}`)
 updateNovelTitle(novelData.value.title)
+
+const novelChapterContent = computed(() => {
+  const pureContent = novelData.value.chapters[chapterOrder - 1].content
+  // split the content text into paragraphs and wrap each with <p> to apply `text-indent` CSS.
+  const paragraphedContent = pureContent.split('\n').map(paragraph => `<p>${paragraph}</p>`).join('')
+  return paragraphedContent
+})
 
 function fetchChapter(page = 1) {
   const currentUrl = window.location.href
@@ -52,8 +59,8 @@ useHead({
 }
 
 .novel-content {
-  text-indent: 2em;
-  margin-bottom: 1.5em;
+  text-indent: 2rem;
+  margin-bottom: 1.5rem;
   line-height: 1.6;
   background-color: var(--chapter-background-color-light);
   word-break: break-all;
