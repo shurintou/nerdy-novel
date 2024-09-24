@@ -1,11 +1,11 @@
 
-const page = ref(1)
-const selectedCategory = ref<Array<string>>([])
 
 /** @summary This composable responds to changes of the useRoute value. */
 export function useNovelFilter() {
   const route = useRoute()
   const categoriesInQuery = route.query.category as string | string[]
+  const page = useState('page', () => 1)
+  const selectedCategory = useState('selectedCategory', () => [] as Array<string>)
 
   selectedCategory.value = Array.isArray(categoriesInQuery) ? categoriesInQuery : (categoriesInQuery ? [categoriesInQuery] : [])
 

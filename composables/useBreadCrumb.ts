@@ -1,8 +1,8 @@
 import type { BreadCrumb } from '@/types/common/breadCrumb'
 
-const novelTitle = ref('小说目录')
 
 export function useBreadCrumb() {
+  const novelTitle = useState('novelTitle', () => '小说目录')
   const updateNovelTitle = (title: string) => {
     novelTitle.value = title
   }
