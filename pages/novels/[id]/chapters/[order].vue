@@ -2,7 +2,7 @@
   <BaseBreadCrumb />
   <div class="novel-container">
     <BaseUnderline :level="2">第{{ chapterOrder }}章</BaseUnderline>
-    <div class="novel-content" v-html="novelData.chapters[chapterOrder - 1].content">
+    <div class="novel-content" v-html="novelData.chapters[chapterOrder - 1].content.replace(/\n/g, '<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;')">
     </div>
   </div>
   <BasePagination :total="novelData.chapters.length" :current="chapterOrder" :unit="'章'" :show-both-end="false"

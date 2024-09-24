@@ -71,10 +71,11 @@ export default defineEventHandler(async (event: H3EventContext): Promise<Novel> 
         content: { S: content },
       } = chapter
 
+      // TODO: now we send all chapters, which is not economical
       chapters.push({
         id: `${id}`,
         title,
-        content: `${content}`, // TODO: styling
+        content,
         order: id,
         createdAt: '2024/01/01', // TODO: what is the timestamp of chapter
         updatedAt: '2024/09/12', // TODO: same comment as above
