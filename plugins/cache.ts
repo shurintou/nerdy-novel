@@ -6,6 +6,9 @@ export const cacheData: { [key: string]: any } = {}
 export default defineNuxtPlugin(() => {
   const cache = $fetch.create({
     async onResponse({ request, response }) {
+      if (!response.ok) {
+        return Promise.reject(response)
+      }
       const cacheKey = request.toString()
       if (shouldUseCache) {
         const cachedData = getCacheData(cacheKey)

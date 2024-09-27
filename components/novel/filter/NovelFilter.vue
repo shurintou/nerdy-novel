@@ -28,7 +28,9 @@ defineProps({
   },
 })
 
-const { data: categories } = await useCacheFetch<Array<string>>('/api/novels/categories')
+const { data, error } = await useCacheFetch<Array<string>>('/api/novels/categories')
+if (error.value) { throw createError(error.value as any) }
+const categories = ref(data.value)
 
 const topCategoryItemList = computed(() => categories.value.slice(0, 10))
 const otherCategoryItemTagList = computed(() => categories.value.length > 10 ? categories.value.slice(10) : [])

@@ -18,7 +18,10 @@ const { updateNovelTitle } = useBreadCrumb()
 
 const route = useRoute()
 const novelId = route.params.id
-const { data: novel } = await useCacheFetch<Novel>(`/api/novels/${novelId}`)
+const { data, error } = await useCacheFetch<Novel>(`/api/novels/${novelId}`)
+if (error.value) { throw createError(error.value as any) }
+const novel = ref(data.value)
+
 updateNovelTitle(novel.value.title)
 
 const title = computed(() => novel.value?.title ? `${novel.value.title} - 呆说网` : '呆说网')

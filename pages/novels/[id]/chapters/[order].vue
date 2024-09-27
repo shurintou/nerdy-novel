@@ -15,7 +15,10 @@ const { updateNovelTitle } = useBreadCrumb()
 const route = useRoute()
 const novelId = route.params.id || ''
 const chapterOrder = parseInt(route.params.order as string) || 1
-const { data: novelData } = await useCacheFetch<Novel>(`/api/novels/${novelId}/chapters/${chapterOrder}`)
+const { data, error } = await useCacheFetch<Novel>(`/api/novels/${novelId}/chapters/${chapterOrder}`)
+if (error.value) { throw createError(error.value as any) }
+const novelData = ref(data.value)
+
 updateNovelTitle(novelData.value.title)
 
 const novelChapterContent = computed(() => {

@@ -35,8 +35,8 @@ export default defineEventHandler(async (event: H3EventContext): Promise<Novel> 
     }
 
     novel = Items[0]
-  } catch (e) {
-    console.log(e)
+  } catch (e: any) {
+    throw createError({ statusCode: 500, statusMessage: e?.message || 'Exception from dynamodb client.' })
   }
 
   // fetch novel chapters
@@ -81,8 +81,8 @@ export default defineEventHandler(async (event: H3EventContext): Promise<Novel> 
         updatedAt: '2024/09/12', // TODO: same comment as above
       })
     }
-  } catch (e) {
-    console.log(e)
+  } catch (e: any) {
+    throw createError({ statusCode: 500, statusMessage: e?.message || 'Exception from dynamodb client.' })
   }
 
   const {

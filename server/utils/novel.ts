@@ -67,8 +67,8 @@ export async function getNovelList(genre: string[]): Promise<NovelList> {
 
         total = Count
         data = Items
-    } catch (e) {
-        console.log(`failed to fetch novel list: ${e}`)
+    } catch (e: any) {
+        throw createError({ statusCode: 500, statusMessage: e?.message || 'Exception from dynamodb client.' })
     }
 
     // for display
