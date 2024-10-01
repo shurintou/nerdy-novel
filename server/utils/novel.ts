@@ -76,6 +76,7 @@ export async function getNovelList(genre: string[]): Promise<NovelList> {
     for (let v of data) {
         const {
             id: {S: id},
+            length: {N: length},
             author_id: {N: author_id},
             genre: {SS: genre},
             synopsis: {S: synopsis},
@@ -83,20 +84,18 @@ export async function getNovelList(genre: string[]): Promise<NovelList> {
             title: {S: title},
             updated_at: {N: updatedAt},
         } = v
+        const author = await getAuthorById(author_id)
 
         const novel = {
             id,
+            length,
             categories: genre,
             description: synopsis,
             title,
+            author: author?.name || "unknown",
             imageUrl,
             imageAlt: `Novel Thumbnail ${id}`,
             updatedAt,
-        }
-
-        const author = await getAuthorById(author_id)
-        if (author) {
-            novel.author = author.name
         }
 
         novels.push(novel)

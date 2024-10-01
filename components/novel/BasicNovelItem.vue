@@ -13,7 +13,11 @@
       </p>
       <div class="meta-bottom">
         <span class="author">{{ novelData.author }}</span>
-        <span class="update-date">更新于：{{ formattedDate }}</span>
+        <div class="meta-bottom">
+          <span class="update-date">更新于：{{ formattedDate }}</span>
+          <span class="global-divider"></span>
+          <span class="update-date">{{ novelData.length }}字</span>
+        </div>
       </div>
     </div>
   </div>
@@ -94,6 +98,7 @@ const formattedDate = computed(() => {
   display: flex;
   justify-content: space-between;
   margin-top: auto;
+  align-items: center;
 }
 
 .author,
@@ -148,6 +153,15 @@ const formattedDate = computed(() => {
   background-color: #f0f0f0;
 }
 
+.global-divider {
+  opacity: 0.8;
+  display: inline-block;
+  width: 1px;
+  height: 0.8rem;
+  border-right-color: #999;
+  border-right-style: solid;
+  border-right-width: 1px;
+}
 
 .basic-novel-list-item:last-child {
   margin-bottom: 16px;
