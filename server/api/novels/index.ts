@@ -2,7 +2,7 @@ import { H3Event, EventHandlerRequest } from 'h3'
 import { CategoryNovelsData, CategoryNovelsParams } from '@/types/apis/novels/'
 import { getNovelList } from "~/server/utils/novel"
 
-const sizePerPage = 30
+const sizePerPage = 15
 
 export default defineEventHandler(async (event: H3Event<EventHandlerRequest>): Promise<CategoryNovelsData> => {
     const {category, page} = getQuery(event) as CategoryNovelsParams
