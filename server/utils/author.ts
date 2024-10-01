@@ -2,7 +2,7 @@ import {ScanCommand} from "@aws-sdk/client-dynamodb";
 import getDBClient from "~/server/utils/db";
 import {Author} from "~/types/models/author";
 
-const authorCache = new Map()<string, Author>;
+const authorCache = new Map();
 
 async function fetch() {
     // reload from db
@@ -21,20 +21,21 @@ async function fetch() {
         return httpStatusCode
     }
 
-    for (let v: Author of Items) {
+    for (let v of Items) {
         const {
             id: {S: id},
+            no: {N: no},
             name: {S: name},
             posts: {N: posts},
             created_at: {N: createdAt},
         } = v
-        authorCache.set(id, {
-            id, name, posts,  createdAt,
+        authorCache.set(no, {
+            id, no, name, posts,  createdAt,
         })
     }
 }
 
-export async function getAuthorById(id: string): Promise<Author> {
+export async function getAuthorById(no: string): Promise<Author> {
     await fetch()
-    return authorCache.get(id)
+    return authorCache.get(no)
 }
