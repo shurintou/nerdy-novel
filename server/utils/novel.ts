@@ -16,7 +16,7 @@ export async function getNovelList(genre: string[]): Promise<NovelList> {
     // var definition
     let data = []
     let total = 0
-    let genreValues = {}
+    let genreValues: {[key: string]: {[key: string]: string}} = {}
     let filter = {
         FilterExpression: filterExpression1, // by default only one genre to filter with
         ExpressionAttributeNames: {
