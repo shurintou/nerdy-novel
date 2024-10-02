@@ -26,10 +26,24 @@ updateNovelTitle(novel.value.title)
 
 const title = computed(() => novel.value?.title ? `${novel.value.title} - 呆说网` : '呆说网')
 
+const bookReleaseDate = computed(() => {
+  const date = new Date(parseInt(novel.value?.createdAt) || 0)
+  return date.toISOString()
+})
+
 useHead({
   title: title
 })
 
+useNerdySeoMeta({
+  title,
+  ogDescription: novel.value.description,
+  twitterDescription: novel.value.description,
+  ogType: 'book',
+  bookAuthor: [novel.value.author],
+  bookTag: novel.value.categories,
+  bookReleaseDate,
+})
 </script>
 
 <style lang="css" scoped>

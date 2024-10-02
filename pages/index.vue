@@ -26,7 +26,7 @@ totalPages.value = data.value?.totalPages || 0
 useHead({
   title: '主页 - 呆书网'
 })
-
+useNerdySeoMeta({})
 </script>
 
 <style lang="css" scoped>

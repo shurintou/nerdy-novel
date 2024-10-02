@@ -36,8 +36,23 @@ function fetchChapter(page = 1) {
 
 const title = computed(() => novelData.value?.title ? `${novelData.value.title} 第${chapterOrder}章 - 呆说网` : '呆说网')
 
+const bookReleaseDate = computed(() => {
+  const date = new Date(parseInt(novelData.value?.createdAt) || 0)
+  return date.toISOString()
+})
+
 useHead({
   title: title
+})
+
+useNerdySeoMeta({
+  title,
+  ogDescription: novelData.value.description,
+  twitterDescription: novelData.value.description,
+  ogType: 'book',
+  bookAuthor: [novelData.value.author],
+  bookTag: novelData.value.categories,
+  bookReleaseDate,
 })
 </script>
 
