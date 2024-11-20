@@ -2,7 +2,7 @@ import { Chapter } from './chapter.d.ts'
 
 export interface Novel {
   id: string
-  category: string
+  categories: Array<string>
   author: string
   title: string
   description: string

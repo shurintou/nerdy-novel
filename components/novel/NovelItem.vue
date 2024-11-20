@@ -12,7 +12,7 @@
       </div>
       <div class="novel-meta">
         <p>
-          <BaseTag :text="novelData.category" />
+          <BaseTag v-for="category in novelData.categories" :text="category" />
         </p>
         <p><span class="novel-author">{{ novelData.author }}</span></p>
       </div>
@@ -39,7 +39,6 @@ defineProps({
   padding: 15px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s;
   position: relative;
   align-items: flex-start;
 }
@@ -135,12 +134,10 @@ defineProps({
 }
 
 .novel a:focus {
-  transition: color 0.3s ease;
   color: var(--primary-button-color);
 }
 
 .novel a h5:hover {
-  transition: color 0.3s ease;
   color: var(--primary-button-color);
 }
 

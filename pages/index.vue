@@ -1,62 +1,41 @@
 <template>
-  <section class="hero">
-    <SlideComponent :apiPath="slideAPI" />
+  <section class="novel-list-page">
+    <NovelFilter />
+
+    <div v-if="selectedCategory" class="novel-list-wrapper">
+      <BaseList class="novel-list">
+        <BaseUnderline :level="3">小说列表</BaseUnderline>
+        <NovelBasicNovelItem v-for="novel in novels" :key="novel.id" :novel-data="novel" />
+      </BaseList>
+      <BasePagination :total="totalPages" :current="page" @page-changed="fetchNovels" />
+    </div>
   </section>
-
-  <div class="main-content">
-    <section class="latest-novels">
-      <h2 class="underline">最新小说</h2>
-      <NovelList :apiPath="novelsAPI" />
-    </section>
-
-    <section class="popular-categories">
-      <h2>热门分类</h2>
-      <CategoryList :apiPath="categoriesAPI" />
-    </section>
-  </div>
 </template>
 
-<script setup>
-import SlideComponent from '~/components/SlideComponent.vue';
+<script lang="ts" setup>
+import type { NovelMetaData, CategoryNovelsData } from '@/types/apis/novels/'
 
-const slideAPI = '/api/home/slides'
-const novelsAPI = '/api/home/novels'
-const categoriesAPI = '/api/home/categories'
+const totalPages = ref(0)
+const { page, selectedCategory, getNovelFilterSearchQuery, fetchNovels } = useNovelFilter()
+const novels = ref<Array<NovelMetaData>>([])
+
+const { data } = await useCacheFetch<CategoryNovelsData>(`/api/novels?${getNovelFilterSearchQuery()}`)
+novels.value = data.value?.novels || []
+totalPages.value = data.value?.totalPages || 0
 
 useHead({
   title: '主页 - 呆书网'
 })
+useNerdySeoMeta({})
 </script>
 
 <style lang="css" scoped>
-.hero {
+.novel-list-wrapper {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 10px 0px 0px 0px;
 }
 
-.main-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 10px 20px;
-}
-
-.latest-novels .underline {
-  position: relative;
-  padding-bottom: 10px;
-}
-
-.latest-novels .underline::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 1px;
-  background-color: var(--text-color-light);
-}
-
-#app-container.dark-mode .latest-novels .underline::after {
-  background-color: var(--text-color-dark);
+.novel-list {
+  padding: 0px 15px
 }
 </style>

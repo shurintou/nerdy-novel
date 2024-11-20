@@ -1,3 +1,6 @@
+# make is for local development only
+# for production deployment, use the deploy.sh
+
 dev:
 	npm run dev
 
@@ -11,6 +14,6 @@ build:
 	docker build . -t nerdy-novel
 
 run: build
-	docker run --rm -d -p 8080:3000 nerdy-novel
+	docker run --rm -d -p 3000:3000 nerdy-novel
 
 .PHONY: dev
