@@ -1,9 +1,9 @@
 <template>
   <div class="filter">
-    <NovelFilterCategoryItem :isTop="true" :categoryList="topCategoryItemList" :title="'热门分类'"
-      :queryKey="CATEGORY_QUERY_KEY" />
-    <NovelFilterCategoryItem :isTop="false" :categoryList="otherCategoryItemTagList" :title="'其他分类'"
-      :queryKey="CATEGORY_QUERY_KEY" :isExpanded="isFilterExpanded" />
+<!--    <NovelFilterCategoryItem :isTop="true" :categoryList="topCategoryItemList" :title="'分类'"-->
+<!--      :queryKey="CATEGORY_QUERY_KEY" />-->
+    <NovelFilterCategoryItem :isTop="false" :categoryList="categoryList" :title="'题材分类'"
+                             :queryKey="CATEGORY_QUERY_KEY" :isExpanded="isFilterExpanded" />
 
     <button class="toggle-btn" :class="{ 'expanded': isFilterExpanded }" @click="toggleFilterExpandHandler">
       {{
@@ -32,11 +32,9 @@ const { data, error } = await useCacheFetch<Array<string>>('/api/novels/categori
 if (error.value) { throw createError(error.value as any) }
 const categories = ref(data.value)
 
-const topCategoryItemList = computed(() => categories.value.slice(0, 10))
-const otherCategoryItemTagList = computed(() => categories.value.length > 10 ? categories.value.slice(10) : [])
-const hasOtherCategorySelected = computed(() => selectedCategory.value.some(category => otherCategoryItemTagList.value.includes(category)))
+const categoryList = computed(() => categories.value)
 
-const isFilterExpanded = ref(hasOtherCategorySelected.value)
+const isFilterExpanded = ref(true)
 
 const toggleFilterExpandHandler = function () {
   isFilterExpanded.value = !isFilterExpanded.value
